@@ -1,9 +1,19 @@
 import type { Itechnology } from '../types'
-import React, { use, useState } from 'react'
+import { use, useState } from 'react'
 import { toast } from 'react-toastify'
 import YourStack from './YourStacks'
 interface TechlogogyStackProps {
   TechlonogyStack: Promise<Itechnology[]>
+}
+
+const categoryBadgeColor: Record<string, string> = {
+  Frontend: 'badge-info',
+  Backend: 'badge-success',
+  Database: 'badge-secondary',
+  Language: 'badge-warning',
+  Styling: 'badge-accent',
+  DevOps: 'badge-neutral',
+  Tools: 'badge-primary',
 }
 
 const Techlonogies = ({TechlonogyStack}:TechlogogyStackProps) => {
@@ -39,23 +49,33 @@ const Techlonogies = ({TechlonogyStack}:TechlogogyStackProps) => {
           {Techlonogies.map((tech) => {
             const isAdded = stack.some((t) => t.id === tech.id)
             return (
-              <div key={tech.id} className="relative bg-white rounded-lg shadow-md p-4">
-                <span className="badge badge-secondary absolute top-3 right-3">{tech.badge}</span>
-                <img src={tech.icon} alt={tech.name} className="w-full h-32 object-contain mb-4" />
+              <div key={tech.id} className="bg-white rounded-2xl shadow-md p-5">
+                <div className="flex items-start justify-between mb-4">
+                  <img src={tech.icon} alt={tech.name} className="w-12 h-12 object-contain" />
+                  <span className={`badge badge-sm ${categoryBadgeColor[tech.category] ?? 'badge-secondary'}`}>
+                    {tech.badge}
+                  </span>
+                </div>
+
                 <h3 className="text-lg font-semibold">{tech.name}</h3>
-                <p className="text-gray-600 mb-3">{tech.description}</p>
+                <p className="text-gray-600 text-sm mt-1 mb-4">{tech.description}</p>
 
-                <div className="flex flex-wrap items-center gap-2 mb-3">
-                  <span className="badge badge-outline">{tech.category}</span>
-                  <span className="badge badge-ghost">{tech.difficulty}</span>
+                <div className="flex items-center justify-between text-sm mb-4">
+                  <span className={`badge badge-sm badge-outline ${categoryBadgeColor[tech.category] ?? ''}`}>
+                    {tech.category}
+                  </span>
+                  <span className="text-gray-500">{tech.difficulty}</span>
+                  <span className="flex items-center gap-1 text-gray-700 font-medium">
+                    <span className="text-yellow-400">★</span>
+                    {tech.rating}
+                  </span>
                 </div>
 
-                <div className="flex items-center gap-1 mb-4">
-                  <span className="text-yellow-400">★</span>
-                  <span className="text-gray-700 font-medium">{tech.rating}</span>
-                </div>
-
-                <button className="btn btn-neutral w-full" disabled={isAdded} onClick={() => handleAdd(tech)}>
+                <button
+                  className="btn w-full rounded-full bg-slate-900 hover:bg-slate-800 text-white border-none disabled:bg-slate-200 disabled:text-slate-400"
+                  disabled={isAdded}
+                  onClick={() => handleAdd(tech)}
+                >
                   {isAdded ? '✓ Added to Stack' : 'Add To Stack'}
                 </button>
               </div>

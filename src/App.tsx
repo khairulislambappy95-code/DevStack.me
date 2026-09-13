@@ -1,6 +1,7 @@
 import { Nav } from './components/nav'
 import { Hero } from './components/hero'
 import { Body } from './components/body'
+import {Footer} from './components/footer'
 import type {Itechnology} from './types'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
@@ -20,6 +21,7 @@ function App() {
       <Hero />
       <Body TechlonogyStack={TechlonogyPromise} />
       <ToastContainer position="bottom-right" autoClose={2500} />
+      <Footer />
     </>
   )
 }
