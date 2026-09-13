@@ -20,7 +20,7 @@ function App() {
       <Nav />
       <Hero />
       <Body TechlonogyStack={TechlonogyPromise} />
-      <ToastContainer position="bottom-right" autoClose={2500} />
+      <ToastContainer position="bottom-right" autoClose={2000} />
       <Footer />
     </>
   )
