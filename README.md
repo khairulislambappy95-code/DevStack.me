@@ -1,35 +1,18 @@
-# React + TypeScript + Vite
+# DevStack
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+DevStack is a simple web app where you can look through popular web development technologies and build your own "stack" by picking the ones you like. You browse cards for things like React, Node.js, PostgreSQL, and Docker, add the ones you want to a list, and remove them again whenever you change your mind.
 
-Currently, two official plugins are available:
+## Technology Used
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- React.js
+- TypeScript
+- Vite
+- Tailwind CSS
+- DaisyUI
+- React-Toastify
 
-## React Compiler
+## Features
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
-
-Note: This will impact Vite dev & build performances.
-You can also try [the experimental native React Compiler support in plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md#rust-react-compiler) by using `compiler: true` in the plugin options instead of using the Babel plugin.
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
-```
-
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+1. **Browse technology cards** – Every card shows the tech's icon, name, description, category, difficulty level, and a star rating, so you know what you're picking before you add it.
+2. **Build your own stack** – Clicking "Add to Stack" puts that technology into a "Your Stack" panel on the side. You can remove one item at a time, or clear the whole stack with one click.
+3. **Toast alerts** – Every action (adding, removing, or clearing your stack) shows a small popup message, so you always get feedback on what just happened.
