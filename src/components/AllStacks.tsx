@@ -39,12 +39,23 @@ const Techlonogies = ({TechlonogyStack}:TechlogogyStackProps) => {
           {Techlonogies.map((tech) => {
             const isAdded = stack.some((t) => t.id === tech.id)
             return (
-              <div key={tech.id} className="bg-white rounded-lg shadow-md p-4">
+              <div key={tech.id} className="relative bg-white rounded-lg shadow-md p-4">
+                <span className="badge badge-secondary absolute top-3 right-3">{tech.badge}</span>
                 <img src={tech.icon} alt={tech.name} className="w-full h-32 object-contain mb-4" />
                 <h3 className="text-lg font-semibold">{tech.name}</h3>
-                <p className="text-gray-600">{tech.description}</p>
+                <p className="text-gray-600 mb-3">{tech.description}</p>
 
-                <button className="btn btn-neutral" disabled={isAdded} onClick={() => handleAdd(tech)}>
+                <div className="flex flex-wrap items-center gap-2 mb-3">
+                  <span className="badge badge-outline">{tech.category}</span>
+                  <span className="badge badge-ghost">{tech.difficulty}</span>
+                </div>
+
+                <div className="flex items-center gap-1 mb-4">
+                  <span className="text-yellow-400">★</span>
+                  <span className="text-gray-700 font-medium">{tech.rating}</span>
+                </div>
+
+                <button className="btn btn-neutral w-full" disabled={isAdded} onClick={() => handleAdd(tech)}>
                   {isAdded ? '✓ Added to Stack' : 'Add To Stack'}
                 </button>
               </div>
